@@ -6,6 +6,7 @@
 /.cargo/
 /target/
 /tools/
+/Assets/
 
 # --- Binaires compilés : publiés en Releases GitHub, pas dans le dépôt ---
 Packages/nanos-mcp-bridge/*.dll
@@ -22,3 +23,6 @@ nanos-mcp.toml
 
 # --- Archives de release (publiées en Releases GitHub) ---
 /dist/
+
+# --- Miscellaneous ---
+*.code-workspace
