@@ -13,7 +13,7 @@ allowed_hosts = ["localhost", "127.0.0.1", "::1"]
 
 [bridge]
 # WebSocket auquel se connecte le package nanos-mcp depuis le serveur Nanos.
-bind = "0.0.0.0:8809"
+bind = "127.0.0.1:8809"
 # Doit être identique à [custom_settings].nanos_mcp_token du Config.toml du serveur.
 token = "change-moi-aussi"
 call_timeout_secs = 15

@@ -53,6 +53,9 @@ on a local server or on any host (VPS, game panel...).
 For a client on another machine, set `[mcp].transport = "http"` and a `http_token`; the hub then
 serves Streamable HTTP on `http://<http_bind>/mcp` with Bearer authentication.
 
+### For distant servers configuration
+change `nanos_mcp_url` to point to the distant server's hub address and set the corresponding `http_token` and update the MCP client configuration accordingly.
+
 ## MCP tools
 
 | Tool | Description |
