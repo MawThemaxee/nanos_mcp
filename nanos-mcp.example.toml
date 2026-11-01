@@ -1,0 +1,19 @@
+# Copier en nanos-mcp.toml (ignoré par git) et adapter.
+# Les secrets peuvent aussi venir de l'environnement :
+#   NANOS_MCP_HTTP_TOKEN, NANOS_MCP_BRIDGE_TOKEN
+
+[mcp]
+# "stdio" : le client MCP (Claude Desktop/Code) lance nanos-mcp sur la même machine.
+# "http"  : Streamable HTTP sur http://<http_bind>/mcp, protégé par http_token.
+transport = "stdio"
+http_bind = "127.0.0.1:8808"
+# http_token = "change-moi"
+# En http derrière un nom de domaine, l'ajouter ici (protection DNS rebinding).
+allowed_hosts = ["localhost", "127.0.0.1", "::1"]
+
+[bridge]
+# WebSocket auquel se connecte le package nanos-mcp depuis le serveur Nanos.
+bind = "127.0.0.1:8809"
+# Doit être identique à [custom_settings].nanos_mcp_token du Config.toml du serveur.
+token = "change-moi-aussi"
+call_timeout_secs = 15

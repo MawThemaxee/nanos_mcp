@@ -1,0 +1,24 @@
+# --- Code Rust : privé, jamais publié (seuls les binaires sont distribués en Releases) ---
+/crates/
+/deps/
+/Cargo.toml
+/Cargo.lock
+/.cargo/
+/target/
+/tools/
+
+# --- Binaires compilés : publiés en Releases GitHub, pas dans le dépôt ---
+Packages/nanos-mcp-bridge/*.dll
+Packages/nanos-mcp-bridge/*.so
+*.exe
+
+# --- Configs locales (secrets, chemins de la machine) ---
+nanos-mcp.toml
+.mcp.json
+
+# --- Fichiers créés si le serveur Nanos est lancé depuis ce dossier ---
+.logs/
+.sentry-native/
+
+# --- Archives de release (publiées en Releases GitHub) ---
+/dist/
