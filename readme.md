@@ -53,8 +53,35 @@ on a local server or on any host (VPS, game panel...).
 For a client on another machine, set `[mcp].transport = "http"` and a `http_token`; the hub then
 serves Streamable HTTP on `http://<http_bind>/mcp` with Bearer authentication.
 
-### For distant servers configuration
-change `nanos_mcp_url` to point to the distant server's hub address and set the corresponding `http_token` and update the MCP client configuration accordingly.
+### Game server on another machine (dev box, dedicated server, VPS)
+
+The game server connects to the hub, so the hub must be reachable from it:
+
+```toml
+# nanos-mcp.toml (hub machine)
+[bridge]
+bind  = "0.0.0.0:8809"
+token = "<long random secret>"
+```
+```toml
+# Config.toml (game server)
+[custom_settings]
+    nanos_mcp_url   = "ws://<hub-ip-or-host>:8809"
+    nanos_mcp_token = "<same secret>"
+```
+
+Open port 8809 on the hub machine. The link is plain `ws://`: over the internet, prefer a private
+network or tunnel (WireGuard, Tailscale, SSH) or restrict the port to the game server's IP.
+
+`http_token` is unrelated: it protects the MCP endpoint when the **MCP client** runs on another
+machine than the hub (`[mcp].transport = "http"`).
+
+## Agent skill
+
+[`skills/nanos-mcp`](skills/nanos-mcp/SKILL.md) teaches an agent when and how to use these tools
+safely (check `server_status` first, ask before destructive actions, known limits) and how to write
+new tools. For Claude Code, copy the folder to `~/.claude/skills/` (all projects) or to
+`.claude/skills/` in your project.
 
 ## MCP tools
 
